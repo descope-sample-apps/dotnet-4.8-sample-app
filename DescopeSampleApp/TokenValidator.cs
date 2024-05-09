@@ -27,17 +27,22 @@ public class TokenValidator
         {
             var jwks = await GetPublicKeyAsync(_projectId);
 
-            Jwk pubKey = (
-                from key in jwks
-                select key
-            ).First();
+            foreach (var jwk in jwks.Keys)
+            {
+                try
+                {
+                    Jwk pubKey = jwk;
 
+                    var payload = JWT.Decode(sessionToken, jwk);
+                    return payload;
+                }
+                catch (Exception)
+                {
+                    // If decoding fails with this key, try the next one
+                }
+            }
 
-            Debug.WriteLine(pubKey.ToString());
-
-            var payload = JWT.Decode(sessionToken, pubKey);
-
-            return payload.ToString();
+            throw new Exception("Failed to validate token with any JWK.");
         }
         catch (Exception ex)
         {
