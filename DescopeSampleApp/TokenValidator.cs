@@ -32,6 +32,7 @@ public class TokenValidator
                 select key
             ).First();
 
+
             Debug.WriteLine(pubKey.ToString());
 
             var payload = JWT.Decode(sessionToken, pubKey);

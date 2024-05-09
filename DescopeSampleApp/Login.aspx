@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Login</title>
-    <script src="https://unpkg.com/@descope/web-js-sdk@latest/dist/index.umd.js"></script>
-    <script src="https://unpkg.com/@descope/web-component@latest/dist/index.js"></script>
+    <script src="https://unpkg.com/@descope/web-js-sdk@1.10.45/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/@descope/web-component@3.11.14/dist/index.js"></script>
 </head>
 <body>
     <form id="loginForm" runat="server">
