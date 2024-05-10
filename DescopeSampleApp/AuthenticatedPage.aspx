@@ -9,7 +9,7 @@
 <body>
     <form id="loginForm" runat="server">
         <p>Welcome to the Authenticated Page!</p>
-        <button onclick="testSampleAPI()">Click here to test Sample API</button>
+        <button onclick="testSampleAPI(event)">Click here to test Sample API</button>
     </form>
 
     <div id="apiResponse"></div>
@@ -29,7 +29,8 @@
             }
         }
 
-        async function testSampleAPI() {
+        async function testSampleAPI(event) {
+            event.preventDefault();
             const sessionToken = sdk.getSessionToken();
             if (sessionToken && !sdk.isJwtExpired(sessionToken)) {
                 try {
