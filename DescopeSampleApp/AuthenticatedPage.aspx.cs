@@ -12,30 +12,7 @@ namespace DescopeSampleApp
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack && Request.IsAuthenticated)
-            {
-                // Validate the session token
-                var tokenValidator = new TokenValidator("P2dI0leWLEC45BDmfxeOCSSOWiCt");
-                var sessionToken = Request.Cookies["sessionToken"]?.Value;
-                if (sessionToken != null)
-                {
-                    try
-                    {
-                        var claimsPrincipal = tokenValidator.ValidateSession(sessionToken);
-                        // Session token is valid, you can set user identity or perform other actions
-                    }
-                    catch (SecurityTokenValidationException ex)
-                    {
-                        // Session token validation failed, redirect to login page
-                        Response.Redirect("~/Login.aspx");
-                    }
-                }
-                else
-                {
-                    // No session token found, redirect to login page
-                    Response.Redirect("~/Login.aspx");
-                }
-            }
+            
         }
     }
 }

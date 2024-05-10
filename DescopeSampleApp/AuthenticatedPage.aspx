@@ -15,7 +15,7 @@
     <div id="apiResponse"></div>
 
     <script>
-        const sdk = Descope({ projectId: "P2dI0leWLEC45BDmfxeOCSSOWiCt", persistTokens: true, autoRefresh: true });
+        const sdk = Descope({ projectId: "__Your Descope Project ID__", persistTokens: true, autoRefresh: true });
 
         const sessionToken = sdk.getSessionToken()
         const currentPath = window.location.pathname;

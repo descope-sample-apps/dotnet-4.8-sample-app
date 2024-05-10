@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using Jose;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
-using System.Diagnostics;
-using System.Reflection;
-using System.Linq;
+
+public class Config
+{
+    public static string DescopeProjectId => Environment.GetEnvironmentVariable("DESCOPE_PROJECT_ID") ?? "P2dI0leWLEC45BDmfxeOCSSOWiCt";
+}
 public class TokenValidator
 {
     private readonly HttpClient _httpClient;
@@ -18,7 +20,7 @@ public class TokenValidator
     public TokenValidator(string projectId)
     {
         _httpClient = new HttpClient();
-        _projectId = projectId;
+        _projectId = Config.DescopeProjectId ?? projectId;
     }
 
     public async Task<string> ValidateSession(string sessionToken)
